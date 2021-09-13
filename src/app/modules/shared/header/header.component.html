@@ -1,0 +1,15 @@
+<mat-toolbar color="primary" class="header">
+  <a href="./home " class="logo">{{headerName}} </a>
+  <span class="example-spacer"></span>
+  <div>
+    <a button mat-button [matMenuTriggerFor]="menu">
+      <ngx-avatar class="imagelogo logo" src="assets/profileimage.jpg" size="18"></ngx-avatar> {{loginName}}
+      <mat-icon>arrow_drop_down</mat-icon>
+    </a>
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item [routerLink]="['/profile']">{{profileName}} </button>
+      <button mat-menu-item [routerLink]="['/changepassword']">{{changePasswordName}} </button>
+      <button mat-menu-item class="logoutButton" (click)="logout()">{{logoutTile}} </button>
+    </mat-menu>
+  </div>
+</mat-toolbar>

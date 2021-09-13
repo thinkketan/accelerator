@@ -1,0 +1,6 @@
+.backgroundColorMain{
+    /* background: url(https://www.bootstrapdash.com/demo/star-admin-free/jquery/src/assets/images/auth/login_1.jpg); */
+    background-size: cover;
+    min-height: 100vh ;
+    background-color: #ececec;
+}

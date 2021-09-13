@@ -1,0 +1,112 @@
+.cardPopUp{
+    max-width: 440px;
+    text-align: center;
+    position: relative;
+    top: 110px;
+    margin-left:auto;
+    margin-right:auto;
+    vertical-align:middle;
+    padding: 28px;
+}
+
+.fromField {
+    display: block;
+}
+
+.loginButton {   
+     margin-top: 13px;
+}
+
+.forgetLink{
+   text-align: left;
+}
+
+.sigeUp{
+    text-align: right;
+}
+
+.marginForgetPassword{
+  margin-top: 10px;
+}
+
+.headerlogin{
+    flex: 1 1 auto;
+}
+
+@media only screen and (min-width: 260px) and (max-width:340px) {
+    .sigeUp{
+        text-align: right;
+    }
+     .marginForgetPassword{
+      margin-top: 0px;
+     }
+     .col-md-6{
+      width: 140px;
+     }
+     .margin{
+      margin-top: 10px;
+     }
+   .cardPopUp{
+    max-width: 440px;
+    text-align: center;
+    position: relative;
+    top: 40px;
+    margin-left:auto;
+    margin-right:auto;
+    vertical-align:middle;
+    padding: 28px;
+    }
+}
+
+@media only screen and (min-width: 340px) and (max-width:400px) {
+    .sigeUp{
+        text-align: right;
+    }
+    .marginForgetPassword{
+       margin-top: 0px;
+     }
+    .col-md-6{
+      width: 164px;
+    }
+    .margin{
+     margin-top: 10px;
+    }
+    .cardPopUp{
+    max-width: 440px;
+    text-align: center;
+    position: relative;
+    top: 40px;
+    margin-left:auto;
+    margin-right:auto;
+    vertical-align:middle;
+    padding: 28px;
+  }
+}
+
+@media only screen and (min-width: 400px) and (max-width: 600px) {
+    .sigeUp{
+        text-align: right;
+    }
+   .marginForgetPassword{
+    margin-top: 0px;
+   }
+   .col-md-6{
+      width: 184px;
+   }
+   .margin{
+    margin-top: 10px;
+   }
+   .cardPopUp{
+    max-width: 440px;
+    text-align: center;
+    position: relative;
+    top: 40px;
+    margin-left:auto;
+    margin-right:auto;
+    vertical-align:middle;
+    padding: 28px;
+    }
+}
+
+
+

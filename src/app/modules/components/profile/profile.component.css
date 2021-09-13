@@ -1,0 +1,125 @@
+.cardPopUp{
+    max-width: 440px;
+    text-align: center;
+    position: relative;
+    top: 110px;
+    margin-left:auto;
+    margin-right:auto;
+    vertical-align:middle;
+    padding: 28px;
+}
+
+.headerTitle{
+    flex: 1 1 auto;
+    flex: 1 1 auto;
+    text-align: cente; 
+    margin: 0 auto;
+}
+
+.fromField {
+    display: block;
+}
+
+.cancel {
+    left: 89px;
+    top: 5px;
+}
+
+.submit{
+    left: 117px;
+    top: 5px;
+}
+
+.editprofile {
+    top: 5px;
+    left: 105px;
+}
+
+@media only screen and (max-width: 400px) {
+    .cancel {
+        left: 50px;
+        top: 5px;
+    }
+    .submit{
+        left: 76px;
+        top: 5px;
+    }
+    .editprofile {
+        top: 5px;
+        left: 63px;
+    }
+    .cardPopUp{
+        max-width: 440px;
+        text-align: center;
+        position: relative;
+        top: 5px;
+        margin-left:auto;
+        margin-right:auto;
+        vertical-align:middle;
+        padding: 28px;
+    }
+}
+
+  @media only screen and (min-width: 400px) and (max-width: 600px) {
+    .cancel {
+        left: 70px;
+        top: 5px;
+    }
+    .submit{
+        left: 95px;
+        top: 5px;
+    }
+    .editprofile {
+        top: 5px;
+        left: 90px;
+    }
+    .cardPopUp{
+        max-width: 440px;
+        text-align: center;
+        position: relative;
+        top: 5px;
+        margin-left:auto;
+        margin-right:auto;
+        vertical-align:middle;
+        padding: 28px;
+    }
+}
+
+@media only screen and (max-width:1200px) and (min-width: 600px) {
+    .cardPopUp{
+        max-width: 440px;
+        text-align: center;
+        position: relative;
+        top: 5px;
+        margin-left:auto;
+        margin-right:auto;
+        vertical-align:middle;
+        padding: 28px;
+    }
+}
+
+@media only screen and (min-width: 260px) and (max-width:340px) {
+    .cancel {
+        left: 40px;
+        top: 5px;
+    }
+    .submit{
+        left: 58px;
+        top: 5px;
+    }
+    .editprofile {
+        top: 5px;
+        left: 48px;
+    }
+    .cardPopUp{
+        max-width: 440px;
+        text-align: center;
+        position: relative;
+        top: 5px;
+        margin-left:auto;
+        margin-right:auto;
+        vertical-align:middle;
+        padding: 28px;
+    }
+}
+
