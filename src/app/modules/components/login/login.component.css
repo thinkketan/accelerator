@@ -108,5 +108,12 @@
     }
 }
 
+.forgetlink{
+    text-align: left;
+}
+.signlink{
+    text-align: right;
+}
+
 
 
