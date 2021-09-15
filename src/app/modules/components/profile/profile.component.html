@@ -60,13 +60,12 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div>
+                    <div class="profileButton">
                         <button mat-stroked-button color="warn" (click)="onCancel()"
                             class="cancel">{{cancelButtonName}}</button>
-                        <button mat-raised-button color="primary" (click)="onSave()" class="submit"
-                            *ngIf="!hideButton">Submit</button>
-                        <button mat-raised-button color="primary" (click)="onEdit()" class="editprofile"
-                            *ngIf="hideButton">Edit Profile</button>
+                        <button mat-raised-button color="primary" (click)="onSave()" *ngIf="!hideButton">Submit</button>
+                        <button mat-raised-button color="primary" (click)="onEdit()" *ngIf="hideButton">Edit
+                            Profile</button>
                     </div>
                 </div>
             </form>

@@ -1,12 +1,12 @@
 <div class="backgroundColorMain">
     <mat-card class="cardPopUp">
         <mat-card-content>
-            <div>
+            <div class="centerText">
                 <img [src]="url" />
             </div>
             <br>
             <form [formGroup]="loginForm">
-                <mat-toolbar color="primary"> <span class="headerlogin"> {{loginHeader}} </span>
+                <mat-toolbar color="primary"> <span class="headerlogin centerText"> {{loginHeader}} </span>
                 </mat-toolbar>
                 <br>
                 <div class="row">
@@ -36,18 +36,20 @@
                         </mat-form-field>
                     </div>
                 </div>
-                <div class="row">
+                <div class="row centerText">
                     <div>
                         <button mat-raised-button color="primary" (click)="onLogin()"
                             class="loginButton">{{loginButtonName}}</button>
                     </div>
                 </div>
-                <div class="row margin">
-                    <div class="col-md-6 forgetlink">
-                        <a class="product-link forgetbutton" (click)="onForgotPassword()">{{forgotPassword}}</a>
-                    </div>
-                    <div class="col-md-6 signlink">
-                        <a class="product-link" [routerLink]="['/signup']">{{signUp}}</a>
+                <div class="row link">
+                    <div class="col-md-12">
+                        <span>
+                            <a class="product-link" (click)="onForgotPassword()">{{forgotPassword}}</a>
+                        </span>
+                        <span class="signlink">
+                            <a class="product-link" [routerLink]="['/signup']">{{signUp}}</a>
+                        </span>
                     </div>
                 </div>
             </form>

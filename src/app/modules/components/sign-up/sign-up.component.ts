@@ -3,6 +3,7 @@ import { signUpForm, ValidationMessages, CustomValidator, MustMatch } from '../.
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import Swal from 'sweetalert2';
+import { CommonService } from '../../shared/services/common.service';
 
 @Component({
   selector: 'app-sign-up',
@@ -28,7 +29,7 @@ export class SignUpComponent implements OnInit {
   public LoginToAccount: string;
   public Login: string;
 
-  constructor(private fb: FormBuilder, private router: Router) {
+  constructor(private fb: FormBuilder, private router: Router, private commonService: CommonService) {
     this.hide = true;
     this.signUpHeader = signUpForm.SIGNUP_FORM_HEADER;
     this.signUpButtonName = signUpForm.SIGNUP_BUTTON_NAME;
@@ -49,10 +50,6 @@ export class SignUpComponent implements OnInit {
     this.onBuildForm();
   }
 
-  public hasError = (controlName: string, errorName: string) => {
-    return this.signupForm.controls[controlName].hasError(errorName);
-  }
-
   onBuildForm() {
     this.signupForm = this.fb.group({
       FirstName: [, [Validators.required, Validators.minLength(2), Validators.maxLength(25)]],
@@ -66,16 +63,6 @@ export class SignUpComponent implements OnInit {
       {
         validators: [MustMatch('Password', 'ConfirmPassword')],
       });
-  }
-
-  public markAsTouched(objectControl: any) {
-    Object.keys(objectControl).forEach(controlName => {
-      if (objectControl[controlName].hasOwnProperty('controls')) {
-        this.markAsTouched(objectControl[controlName].controls);
-      } else {
-        objectControl[controlName].markAsTouched();
-      }
-    });
   }
 
   validationSinup() {
@@ -108,7 +95,7 @@ export class SignUpComponent implements OnInit {
   }
 
   onSave() {
-    this.markAsTouched(this.signupForm.controls);
+    this.commonService.markAsTouched(this.signupForm.controls);
     if (this.signupForm.valid) {
       Swal.fire('successfully. please login')
       this.router.navigate(['/login']);

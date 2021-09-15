@@ -2,7 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { ValidationMessages, forgotPasswordForm, CustomValidator } from '../../shared/constants';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MatDialogRef } from '@angular/material/dialog';
+import { CommonService } from '../../shared/services/common.service';
 
 @Component({
   selector: 'app-forgot-password',
@@ -25,7 +26,7 @@ export class ForgotPasswordComponent implements OnInit {
   public SEND_MAIL_MASSAGE1: string;
   public emailId: string;
 
-  constructor(private fb: FormBuilder, private router: Router,
+  constructor(private fb: FormBuilder, private router: Router, private commonService: CommonService,
     public dialogRef: MatDialogRef<any>
   ) {
     this.hide = true;
@@ -46,23 +47,9 @@ export class ForgotPasswordComponent implements OnInit {
     this.onBuildForm();
   }
 
-  public hasError = (controlName: string, errorName: string) => {
-    return this.forgotForm.controls[controlName].hasError(errorName);
-  }
-
   onBuildForm() {
     this.forgotForm = this.fb.group({
       EmailId: [, [Validators.required, CustomValidator.email]],
-    });
-  }
-
-  public markAsTouched(objectControl: any) {
-    Object.keys(objectControl).forEach(controlName => {
-      if (objectControl[controlName].hasOwnProperty('controls')) {
-        this.markAsTouched(objectControl[controlName].controls);
-      } else {
-        objectControl[controlName].markAsTouched();
-      }
     });
   }
 
@@ -77,7 +64,7 @@ export class ForgotPasswordComponent implements OnInit {
   }
 
   onSave() {
-    this.markAsTouched(this.forgotForm.controls);
+    this.commonService.markAsTouched(this.forgotForm.controls);
     if (this.forgotForm.valid) {
       this.emailId = this.forgotForm.get('EmailId')?.value;
       this.forgotFormHide = false;

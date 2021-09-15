@@ -4,14 +4,13 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
 import { ForgotPasswordComponent } from '../forgot-password/forgot-password.component';
+import { CommonService } from '../../shared/services/common.service';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css'],
-
 })
-
 export class LoginComponent implements OnInit {
   public url: any;
   loginForm!: FormGroup;
@@ -25,7 +24,7 @@ export class LoginComponent implements OnInit {
   public validationMessages: any;
 
   constructor(private fb: FormBuilder, private router: Router,
-    public dialog: MatDialog
+    public dialog: MatDialog, private commonService: CommonService
   ) {
     this.hide = true;
     this.url = Logo.logoUrl;
@@ -40,20 +39,6 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void {
     this.onBuildForm();
-  }
-
-  public hasError = (controlName: string, errorName: string) => {
-    return this.loginForm.controls[controlName].hasError(errorName);
-  }
-
-  public markAsTouched(objectControl: any) {
-    Object.keys(objectControl).forEach(controlName => {
-      if (objectControl[controlName].hasOwnProperty('controls')) {
-        this.markAsTouched(objectControl[controlName].controls);
-      } else {
-        objectControl[controlName].markAsTouched();
-      }
-    });
   }
 
   onBuildForm() {
@@ -97,7 +82,7 @@ export class LoginComponent implements OnInit {
   }
 
   onLogin() {
-    this.markAsTouched(this.loginForm.controls);
+    this.commonService.markAsTouched(this.loginForm.controls);
     if (this.loginForm.valid) {
       const emailId = this.loginForm.get('EmailId')?.value;
       const password = this.loginForm.get('Password')?.value;

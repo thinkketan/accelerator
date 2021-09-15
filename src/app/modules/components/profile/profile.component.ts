@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { profileName, ValidationMessages, CustomValidator } from '../../shared/constants';
 import profile from '../../../modules/shared/profile.json';
 import { from } from 'rxjs';
+import { CommonService } from '../../shared/services/common.service';
 
 @Component({
   selector: 'app-profile',
@@ -25,7 +26,7 @@ export class ProfileComponent implements OnInit {
   public hideButton: boolean;
   public myProfile: { FirstName: number, LastName: string, MobileNo: number, EmailId: string };
 
-  constructor(private fb: FormBuilder, private router: Router) {
+  constructor(private fb: FormBuilder, private router: Router, private commonService: CommonService) {
     this.validationMessages = ValidationMessages.SIGNUP;
     this.profileHeader = profileName.PROFILE_FORM_HEADER;
     this.profileButtonName = profileName.PROFILE_BUTTON_NAME;
@@ -43,10 +44,6 @@ export class ProfileComponent implements OnInit {
     this.onBuildForm();
   }
 
-  public hasError = (controlName: string, errorName: string) => {
-    return this.profileForm.controls[controlName].hasError(errorName);
-  }
-
   onBuildForm() {
     this.profileForm = this.fb.group({
       FirstName: [this.myProfile.FirstName, [Validators.required, Validators.minLength(2), Validators.maxLength(25)]],
@@ -57,22 +54,12 @@ export class ProfileComponent implements OnInit {
     });
   }
 
-  public markAsTouched(objectControl: any) {
-    Object.keys(objectControl).forEach(controlName => {
-      if (objectControl[controlName].hasOwnProperty('controls')) {
-        this.markAsTouched(objectControl[controlName].controls);
-      } else {
-        objectControl[controlName].markAsTouched();
-      }
-    });
-  }
-
   onCancel() {
     this.router.navigate(['/home']);
   }
 
   onSave() {
-    this.markAsTouched(this.profileForm.controls);
+    this.commonService.markAsTouched(this.profileForm.controls);
     if (this.profileForm.valid) {
       this.hideButton = true;
       this.editprofile = true;

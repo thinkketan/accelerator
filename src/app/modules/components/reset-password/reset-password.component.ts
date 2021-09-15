@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { resetPasswordForm, ValidationMessages, MustMatch } from '../../shared/constants';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { CommonService } from '../../shared/services/common.service';
 
 @Component({
   selector: 'app-reset-password',
@@ -20,7 +21,7 @@ export class ResetPasswordComponent implements OnInit {
   public confirmPasswordTitle: any;
   public resetPasswordHeader: any;
 
-  constructor(private fb: FormBuilder, private router: Router) {
+  constructor(private fb: FormBuilder, private router: Router,private commonService: CommonService) {
     this.hide = true;
     this.hideConfirm = true;
     this.validationMessages = ValidationMessages.RESET_PASSWORD;
@@ -35,10 +36,6 @@ export class ResetPasswordComponent implements OnInit {
     this.onBuildForm();
   }
 
-  public hasError = (controlName: string, errorName: string) => {
-    return this.resetPasswordForm.controls[controlName].hasError(errorName);
-  }
-
   onBuildForm() {
     this.resetPasswordForm = this.fb.group({
       Password: [, [Validators.required, Validators.minLength(8), Validators.maxLength(24)]],
@@ -47,16 +44,6 @@ export class ResetPasswordComponent implements OnInit {
       {
         validators: [MustMatch('Password', 'ConfirmPassword')],
       });
-  }
-
-  public markAsTouched(objectControl: any) {
-    Object.keys(objectControl).forEach(controlName => {
-      if (objectControl[controlName].hasOwnProperty('controls')) {
-        this.markAsTouched(objectControl[controlName].controls);
-      } else {
-        objectControl[controlName].markAsTouched();
-      }
-    });
   }
 
   validationReset() {
@@ -89,7 +76,7 @@ export class ResetPasswordComponent implements OnInit {
   }
 
   onSave() {
-    this.markAsTouched(this.resetPasswordForm.controls);
+    this.commonService.markAsTouched(this.resetPasswordForm.controls);
   }
 
   onCancel() {

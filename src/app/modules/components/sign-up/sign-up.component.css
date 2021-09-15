@@ -2,7 +2,7 @@
     max-width: 440px;
     text-align: center;
     position: relative;
-    top: 110px;
+    top: 50px;
     margin-left:auto;
     margin-right:auto;
     vertical-align:middle;
@@ -33,15 +33,3 @@
  margin-top: 14px;
 }
 
-@media only screen and (min-width: 260px) and (max-width:1200px) {
-    .cardPopUp{
-        max-width: 440px;
-        text-align: center;
-        position: relative;
-        top: 40px;
-        margin-left:auto;
-        margin-right:auto;
-        vertical-align:middle;
-        padding: 28px;
-    }
-  }

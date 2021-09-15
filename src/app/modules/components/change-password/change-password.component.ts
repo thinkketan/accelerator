@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { changePasswordForm, ValidationMessages, MustMatch } from '../../shared/constants';
+import { CommonService } from '../../shared/services/common.service';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -22,7 +23,8 @@ export class ChangePasswordComponent implements OnInit {
   public passwordName: string;
   public confirmPasswordName: string;
 
-  constructor(private fb: FormBuilder, private router: Router) {
+  constructor(private fb: FormBuilder, private router: Router,
+    private commonService: CommonService) {
     this.hide = true;
     this.hideConfirm = true;
     this.hideCurrent = true;
@@ -48,10 +50,6 @@ export class ChangePasswordComponent implements OnInit {
       {
         validators: [MustMatch('Password', 'ConfirmPassword')],
       });
-  }
-
-  public hasError = (controlName: string, errorName: string) => {
-    return this.changePasswordForm.controls[controlName].hasError(errorName);
   }
 
   validationChangePassword() {
@@ -81,16 +79,6 @@ export class ChangePasswordComponent implements OnInit {
         special: true
       })
     }
-  }
-
-  public markAsTouched(objectControl: any) {
-    Object.keys(objectControl).forEach(controlName => {
-      if (objectControl[controlName].hasOwnProperty('controls')) {
-        this.markAsTouched(objectControl[controlName].controls);
-      } else {
-        objectControl[controlName].markAsTouched();
-      }
-    });
   }
 
   validationReset() {
@@ -123,10 +111,9 @@ export class ChangePasswordComponent implements OnInit {
   }
 
   onSave() {
-    this.markAsTouched(this.changePasswordForm.controls);
+    this.commonService.markAsTouched(this.changePasswordForm.controls);
     if (this.changePasswordForm.valid) {
       Swal.fire('Success!', 'Password has been changed successfully. Please login with your new password!', 'success')
-      // Swal.fire('Password has been changed successfully. please login with your new password')
       localStorage.clear();
       this.router.navigate(['/login']);
     } else { }
