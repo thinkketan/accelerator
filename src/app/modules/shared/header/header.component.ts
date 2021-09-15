@@ -7,7 +7,6 @@ import { headerName } from '../constants'
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.css']
 })
-
 export class HeaderComponent implements OnInit {
   public headerName: string;
   public profileName: string;

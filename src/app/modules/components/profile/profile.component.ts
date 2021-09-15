@@ -11,7 +11,6 @@ import { CommonService } from '../../shared/services/common.service';
   templateUrl: './profile.component.html',
   styleUrls: ['./profile.component.css']
 })
-
 export class ProfileComponent implements OnInit {
   profileForm!: FormGroup;
   public validationMessages: any;
@@ -59,6 +58,7 @@ export class ProfileComponent implements OnInit {
   }
 
   onSave() {
+    //chek valid form
     this.commonService.markAsTouched(this.profileForm.controls);
     if (this.profileForm.valid) {
       this.hideButton = true;
@@ -66,6 +66,7 @@ export class ProfileComponent implements OnInit {
     } else { }
   }
 
+  //edit profile
   onEdit() {
     this.hideButton = false;
     this.editprofile = false;

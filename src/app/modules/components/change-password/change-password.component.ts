@@ -52,65 +52,18 @@ export class ChangePasswordComponent implements OnInit {
       });
   }
 
+  //chek Current password validation
   validationChangePassword() {
-    const password = this.changePasswordForm.controls['CurrentPassword']
-    if (/[A-Z]+/.test(password.value)) {
-    } else {
-      this.changePasswordForm.controls['CurrentPassword'].setErrors({
-        upper: true
-      })
-    }
-    if (/[a-z]+/.test(password.value)) {
-    } else {
-      this.changePasswordForm.controls['CurrentPassword'].setErrors({
-        lower: true
-      })
-    }
-    if (/[0-9]+/.test(password.value)) {
-    } else {
-      this.changePasswordForm.controls['CurrentPassword'].setErrors({
-        number: true
-      })
-    }
-    const regex = /[$-/:-?{-~!"^_@#`\[\]]/g;
-    if (regex.test(password.value)) {
-    } else {
-      this.changePasswordForm.controls['CurrentPassword'].setErrors({
-        special: true
-      })
-    }
+    this.commonService.currentPasswordValidation(this.changePasswordForm.controls);
   }
 
+  //chek password validation
   validationReset() {
-    const password = this.changePasswordForm.controls['Password']
-    if (/[A-Z]+/.test(password.value)) {
-    } else {
-      this.changePasswordForm.controls['Password'].setErrors({
-        upper: true
-      })
-    }
-    if (/[a-z]+/.test(password.value)) {
-    } else {
-      this.changePasswordForm.controls['Password'].setErrors({
-        lower: true
-      })
-    }
-    if (/[0-9]+/.test(password.value)) {
-    } else {
-      this.changePasswordForm.controls['Password'].setErrors({
-        number: true
-      })
-    }
-    const regex = /[$-/:-?{-~!"^_@#`\[\]]/g;
-    if (regex.test(password.value)) {
-    } else {
-      this.changePasswordForm.controls['Password'].setErrors({
-        special: true
-      })
-    }
+    this.commonService.passwordValidation(this.changePasswordForm.controls);
   }
 
   onSave() {
+    //chek valid form
     this.commonService.markAsTouched(this.changePasswordForm.controls);
     if (this.changePasswordForm.valid) {
       Swal.fire('Success!', 'Password has been changed successfully. Please login with your new password!', 'success')

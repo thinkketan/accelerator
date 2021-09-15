@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { LocationStrategy } from '@angular/common';
+
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -10,9 +11,11 @@ export class HomeComponent implements OnInit {
   constructor(private location: LocationStrategy) { }
 
   ngOnInit(): void {
+    //browser back key functionlity 
     history.pushState(null, window.location.href);
     this.location.onPopState(() => {
       history.pushState(null, window.location.href);
     });
   }
+
 }

@@ -10,7 +10,6 @@ import { CommonService } from '../../shared/services/common.service';
   templateUrl: './forgot-password.component.html',
   styleUrls: ['./forgot-password.component.css']
 })
-
 export class ForgotPasswordComponent implements OnInit {
   forgotForm!: FormGroup;
   public hide: Boolean;
@@ -58,12 +57,14 @@ export class ForgotPasswordComponent implements OnInit {
     this.router.navigate(['/login']);
   }
 
+  //close reset form
   onCancelReset() {
     this.dialogRef.close();
     this.router.navigate(['/login']);
   }
 
   onSave() {
+    //chek valid form
     this.commonService.markAsTouched(this.forgotForm.controls);
     if (this.forgotForm.valid) {
       this.emailId = this.forgotForm.get('EmailId')?.value;

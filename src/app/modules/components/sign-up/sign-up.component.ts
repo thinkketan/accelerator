@@ -10,7 +10,6 @@ import { CommonService } from '../../shared/services/common.service';
   templateUrl: './sign-up.component.html',
   styleUrls: ['./sign-up.component.css']
 })
-
 export class SignUpComponent implements OnInit {
   public password: boolean | undefined;
   signupForm!: FormGroup;
@@ -65,36 +64,13 @@ export class SignUpComponent implements OnInit {
       });
   }
 
+  //chek password validation
   validationSinup() {
-    const password = this.signupForm.controls['Password']
-    if (/[A-Z]+/.test(password.value)) {
-    } else {
-      this.signupForm.controls['Password'].setErrors({
-        upper: true
-      })
-    }
-    if (/[a-z]+/.test(password.value)) {
-    } else {
-      this.signupForm.controls['Password'].setErrors({
-        lower: true
-      })
-    }
-    if (/[0-9]+/.test(password.value)) {
-    } else {
-      this.signupForm.controls['Password'].setErrors({
-        number: true
-      })
-    }
-    const regex = /[$-/:-?{-~!"^_@#`\[\]]/g;
-    if (regex.test(password.value)) {
-    } else {
-      this.signupForm.controls['Password'].setErrors({
-        special: true
-      })
-    }
+    this.commonService.passwordValidation(this.signupForm.controls);
   }
 
   onSave() {
+    //chek valid form
     this.commonService.markAsTouched(this.signupForm.controls);
     if (this.signupForm.valid) {
       Swal.fire('successfully. please login')

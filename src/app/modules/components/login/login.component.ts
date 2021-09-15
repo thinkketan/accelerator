@@ -44,7 +44,7 @@ export class LoginComponent implements OnInit {
   onBuildForm() {
     this.loginForm = this.fb.group({
       EmailId: [, [Validators.required, CustomValidator.email]],
-      Password: [, [Validators.required, Validators.maxLength(24)]],
+      Password: [, [Validators.required, Validators.minLength(8), Validators.maxLength(24)]],
     });
   }
 
@@ -52,37 +52,41 @@ export class LoginComponent implements OnInit {
     this.router.navigate(['/signup']);
   }
 
+  //chek in password validation
   validationSinup() {
-    const password = this.loginForm.controls['Password']
-    if (/[A-Z]+/.test(password.value)) {
-    } else {
-      this.loginForm.controls['Password'].setErrors({
-        upper: true
-      })
-    }
-    if (/[a-z]+/.test(password.value)) {
-    } else {
-      this.loginForm.controls['Password'].setErrors({
-        lower: true
-      })
-    }
-    if (/[0-9]+/.test(password.value)) {
-    } else {
-      this.loginForm.controls['Password'].setErrors({
-        number: true
-      })
-    }
-    const regex = /[$-/:-?{-~!"^_@#`\[\]]/g;
-    if (regex.test(password.value)) {
-    } else {
-      this.loginForm.controls['Password'].setErrors({
-        special: true
-      })
-    }
+    this.commonService.passwordValidation(this.loginForm.controls);
+    // const password = this.loginForm.controls['Password']
+    // if (/[A-Z]+/.test(password.value)) {
+    // } else {
+    //   this.loginForm.controls['Password'].setErrors({
+    //     upper: true
+    //   })
+    // }
+    // if (/[a-z]+/.test(password.value)) {
+    // } else {
+    //   this.loginForm.controls['Password'].setErrors({
+    //     lower: true
+    //   })
+    // }
+    // if (/[0-9]+/.test(password.value)) {
+    // } else {
+    //   this.loginForm.controls['Password'].setErrors({
+    //     number: true
+    //   })
+    // }
+    // const regex = /[$-/:-?{-~!"^_@#`\[\]]/g;
+    // if (regex.test(password.value)) {
+    // } else {
+    //   this.loginForm.controls['Password'].setErrors({
+    //     special: true
+    //   })
+    // }
   }
 
   onLogin() {
+    //chek valid form
     this.commonService.markAsTouched(this.loginForm.controls);
+    //credential set in local storage
     if (this.loginForm.valid) {
       const emailId = this.loginForm.get('EmailId')?.value;
       const password = this.loginForm.get('Password')?.value;
@@ -95,6 +99,7 @@ export class LoginComponent implements OnInit {
     } else { }
   }
 
+  //popup open in forgot passowrd
   onForgotPassword() {
     const dialogRef = this.dialog.open(ForgotPasswordComponent,
       { data: {}, width: '450px', disableClose: true });

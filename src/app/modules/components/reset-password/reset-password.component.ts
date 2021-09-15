@@ -9,7 +9,6 @@ import { CommonService } from '../../shared/services/common.service';
   templateUrl: './reset-password.component.html',
   styleUrls: ['./reset-password.component.css']
 })
-
 export class ResetPasswordComponent implements OnInit {
   public resetPasswordForm!: FormGroup;
   public hide: Boolean;
@@ -21,7 +20,7 @@ export class ResetPasswordComponent implements OnInit {
   public confirmPasswordTitle: any;
   public resetPasswordHeader: any;
 
-  constructor(private fb: FormBuilder, private router: Router,private commonService: CommonService) {
+  constructor(private fb: FormBuilder, private router: Router, private commonService: CommonService) {
     this.hide = true;
     this.hideConfirm = true;
     this.validationMessages = ValidationMessages.RESET_PASSWORD;
@@ -46,6 +45,7 @@ export class ResetPasswordComponent implements OnInit {
       });
   }
 
+  //chek password validation
   validationReset() {
     const password = this.resetPasswordForm.controls['Password']
     if (/[A-Z]+/.test(password.value)) {
@@ -76,6 +76,7 @@ export class ResetPasswordComponent implements OnInit {
   }
 
   onSave() {
+    //chek valid form
     this.commonService.markAsTouched(this.resetPasswordForm.controls);
   }
 

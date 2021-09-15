@@ -87,14 +87,12 @@ export class CustomValidator extends Validators {
             return { pattern: true };
         } return null;
     }
-
 }
 
 export function MustMatch(controlName: string, matchingControlName: string) {
     return (formGroup: FormGroup) => {
         const control = formGroup.controls[controlName];
         const matchingControl = formGroup.controls[matchingControlName];
-
         if (matchingControl.errors && !matchingControl.errors.mustMatch) {
             return;
         }
@@ -107,6 +105,7 @@ export function MustMatch(controlName: string, matchingControlName: string) {
     };
 }
 
+// All validation show massagess
 export const ValidationMessages = {
     SIGNUP: {
         FirstName: [
@@ -184,7 +183,6 @@ export const ValidationMessages = {
             { type: 'mustMatch', message: 'Confirm Password must match with Password' },
         ],
     },
-
 
     CHANGE_PASSWORD: {
         Password: [
