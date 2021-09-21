@@ -47,12 +47,12 @@ export class ResetPasswordComponent implements OnInit {
 
   //chek password validation
   validationReset() {
-
+    this.commonService.passwordValidation(this.resetPasswordForm.controls);
   }
 
   onSave() {
     //chek valid form
-    this.commonService.passwordValidation(this.resetPasswordForm.controls);
+    this.commonService.markAsTouched(this.resetPasswordForm.controls);
   }
 
   onCancel() {

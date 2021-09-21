@@ -1,5 +1,6 @@
   .header {
-    overflow: hidden;height: inherit;
+    overflow: hidden;
+    height: inherit;
   }
   
   .example-spacer {
@@ -34,16 +35,16 @@
     float: right;
   }
 
-  .logoutButton{
+  .logoutButton {
     color: red;
   }
 
-  .imagelogo{
+  .imagelogo {
     float: left;
-   margin-left: 5px;
+    margin-left: 5px;
   }
 
-  .logo{
+  .logo {
     margin: 0px 2px;
     color: white;
     text-decoration: none;
