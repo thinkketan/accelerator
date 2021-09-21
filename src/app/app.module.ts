@@ -19,6 +19,7 @@ import { ProfileComponent } from './modules/components/profile/profile.component
 import { ChangePasswordComponent } from '../app/modules/components/change-password/change-password.component';
 import { AuthGuard } from './modules/auth.guard'
 import { AvatarModule } from 'ngx-avatar';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 @NgModule({
   declarations: [
@@ -36,6 +37,7 @@ import { AvatarModule } from 'ngx-avatar';
     FormsModule, ReactiveFormsModule,
     HttpClientModule,
     AvatarModule,
+    FlexLayoutModule,
     MaterialModule, MatFormFieldModule,
   ],
   entryComponents: [

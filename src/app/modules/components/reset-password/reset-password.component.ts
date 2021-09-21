@@ -47,37 +47,12 @@ export class ResetPasswordComponent implements OnInit {
 
   //chek password validation
   validationReset() {
-    const password = this.resetPasswordForm.controls['Password']
-    if (/[A-Z]+/.test(password.value)) {
-    } else {
-      this.resetPasswordForm.controls['Password'].setErrors({
-        upper: true
-      })
-    }
-    if (/[a-z]+/.test(password.value)) {
-    } else {
-      this.resetPasswordForm.controls['Password'].setErrors({
-        lower: true
-      })
-    }
-    if (/[0-9]+/.test(password.value)) {
-    } else {
-      this.resetPasswordForm.controls['Password'].setErrors({
-        number: true
-      })
-    }
-    const regex = /[$-/:-?{-~!"^_@#`\[\]]/g;
-    if (regex.test(password.value)) {
-    } else {
-      this.resetPasswordForm.controls['Password'].setErrors({
-        special: true
-      })
-    }
+
   }
 
   onSave() {
     //chek valid form
-    this.commonService.markAsTouched(this.resetPasswordForm.controls);
+    this.commonService.passwordValidation(this.resetPasswordForm.controls);
   }
 
   onCancel() {
