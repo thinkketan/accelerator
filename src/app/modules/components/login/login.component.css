@@ -1,49 +1,11 @@
-.cardPopUp{
+.cardPopUp { 
     max-width: 440px;
-    position: relative;
-    top: 110px;
-    margin-left:auto;
-    margin-right:auto;
-    vertical-align:middle;
-    padding: 28px;
+    top: 50px;
 }
 
-.fromField {
+.mat-form-field {
     display: block;
 }
-
-.loginButton {   
-     margin-top: 13px;
-}
-
-.forgetLink{
-   text-align: left;
-}
-
-.sigeUp{
-    text-align: right;
-}
-
-.centerText{
-    text-align: center;
-}
-
-.marginForgetPassword{
-  margin-top: 10px;
-}
-
-.headerlogin{
-    flex: 1 1 auto;
-}
-
-.link{
-    margin-top: 10px;
-}
-
-.signlink{
-   float: right;
-}
-
 
 
 

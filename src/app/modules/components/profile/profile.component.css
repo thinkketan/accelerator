@@ -1,39 +1,22 @@
-.cardPopUp{
+.mat-toolbar-row, .mat-toolbar-single-row {
+    display: flex;
+    white-space: pre-wrap;
+    justify-content: space-around;
+}
+
+.cardPopUp { 
     max-width: 440px;
-    position: relative;
     top: 50px;
-    margin-left:auto;
-    margin-right:auto;
-    vertical-align:middle;
-    padding: 28px;
 }
 
-.headerTitle{
-    flex: 1 1 auto;
-    flex: 1 1 auto;
-    text-align: cente; 
-    margin: 0 auto;
-}
-
-.fromField {
+.mat-form-field {
     display: block;
 }
 
-.cancel {
-margin-right: 10px;
-}
-
-.submit{
-    left: 117px;
-    top: 5px;
-}
-
-.editprofile {
-    top: 5px;
-    left: 105px;
-}
-
-.profileButton{
+.profileButton {
     text-align: right;
 }
 
+.cancel {
+    margin: 4px 8px;
+}

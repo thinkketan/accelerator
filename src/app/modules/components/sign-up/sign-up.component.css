@@ -1,35 +1,8 @@
-.cardPopUp{
+.cardPopUp { 
     max-width: 440px;
-    text-align: center;
-    position: relative;
     top: 50px;
-    margin-left:auto;
-    margin-right:auto;
-    vertical-align:middle;
-    padding: 28px;
 }
 
-.headerTitle{
-    flex: 1 1 auto;
-    flex: 1 1 auto;
-    text-align: cente; 
-    margin: 0 auto;
-}
-
-.fromField {
+.mat-form-field {
     display: block;
 }
-
-.cancelbutton{
-    left: 214px;
-    top: 10px;
-}
-
-.savebutton{
-    top: 10px;
-}
-
-.loginLink{
- margin-top: 14px;
-}
-

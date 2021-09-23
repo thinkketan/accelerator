@@ -1,13 +1,12 @@
 <div class="backgroundColorMain">
-    <mat-card class="cardPopUp">
-        <mat-toolbar color="primary"> <span class="md-title text-center headerTitle"> {{signUpHeader}} </span>
-        </mat-toolbar>
+    <mat-card class="cardPopUp mx-auto">
+        <mat-toolbar color="primary" class="justify-content-center"> {{signUpHeader}} </mat-toolbar>
         <br>
         <mat-card-content>
             <form [formGroup]="signupForm">
                 <div class="row">
                     <div class="col-md-12">
-                        <mat-form-field class="fromField">
+                        <mat-form-field>
                             <input autofocus matInput formControlName="FirstName" placeholder="{{firstNameTitle}}"
                                 required autofocus>
                             <mat-error *ngFor="let validation of validationMessages.FirstName">
@@ -20,7 +19,7 @@
                 </div>
                 <div class="row">
                     <div class="col-md-12">
-                        <mat-form-field class="fromField">
+                        <mat-form-field>
                             <input matInput formControlName="LastName" placeholder="{{lastNameTitle}}" required>
                             <mat-error *ngFor="let validation of validationMessages.LastName">
                                 <span
@@ -32,7 +31,7 @@
                 </div>
                 <div class="row">
                     <div class="col-md-12">
-                        <mat-form-field class="fromField">
+                        <mat-form-field>
                             <input matInput formControlName="MobileNo" placeholder="{{mobileNoTitle}}"
                                 onkeypress="if ( isNaN(this.value + String.fromCharCode(event.keyCode) )) return false;"
                                 required>
@@ -46,7 +45,7 @@
                 </div>
                 <div class="row">
                     <div class="col-md-12">
-                        <mat-form-field class="fromField">
+                        <mat-form-field>
                             <input matInput formControlName="EmailId" placeholder="{{emailIdTitle}}" required>
                             <mat-error *ngFor="let validation of validationMessages.EmailId">
                                 <span
@@ -58,7 +57,7 @@
                 </div>
                 <div class="row">
                     <div class="col-md-12">
-                        <mat-form-field class="fromField">
+                        <mat-form-field>
                             <input matInput formControlName="Password" placeholder="{{passwordTitle}}"
                                 type="{{ hide ? 'password' : 'text'}}" (ngModelChange)="validationSinup()" required>
                             <mat-error *ngFor="let validation of validationMessages.Password">
@@ -73,7 +72,7 @@
                 </div>
                 <div class="row">
                     <div class="col-md-12 ">
-                        <mat-form-field class="fromField">
+                        <mat-form-field>
                             <input matInput formControlName="ConfirmPassword" placeholder="{{confirmPasswordTitle}}"
                                 type="{{ hideConfirm ? 'password' : 'text'}}">
                             <mat-error *ngFor="let validation of validationMessages.ConfirmPassword">
@@ -86,14 +85,13 @@
                         </mat-form-field>
                     </div>
                 </div>
-                <div class="row">
+                <div class="row text-center">
                     <div>
-                        <button mat-raised-button color="primary" (click)="onSave()"
-                            class="savebutton">{{signUpButtonName}}</button>
+                        <button mat-raised-button color="primary" (click)="onSave()">{{signUpButtonName}}</button>
                     </div>
                 </div>
-                <div class="row">
-                    <div class="loginLink">
+                <div class="row text-center mt-1">
+                    <div>
                         {{LoginToAccount}} <a href="/login">{{Login}}</a>
                     </div>
                 </div>

@@ -1,17 +1,16 @@
 <div class="backgroundColorMain">
-    <mat-card class="cardPopUp">
+    <mat-card class="cardPopUp mx-auto">
+        <div class="text-center">
+            <img [src]="url" />
+        </div>
+        <br>
+        <mat-toolbar color="primary" class="justify-content-center">{{loginHeader}}</mat-toolbar>
+        <br>
         <mat-card-content>
-            <div class="centerText">
-                <img [src]="url" />
-            </div>
-            <br>
             <form [formGroup]="loginForm">
-                <mat-toolbar color="primary"> <span class="headerlogin centerText"> {{loginHeader}} </span>
-                </mat-toolbar>
-                <br>
                 <div class="row">
                     <div class="col-md-12">
-                        <mat-form-field class="fromField">
+                        <mat-form-field>
                             <input matInput formControlName="EmailId" placeholder="{{emailIdTitle}}" required autofocus>
                             <mat-error *ngFor="let validation of validationMessages.EmailId">
                                 <span
@@ -23,7 +22,7 @@
                 </div>
                 <div class="row">
                     <div class="col-md-12">
-                        <mat-form-field class="fromField">
+                        <mat-form-field>
                             <input matInput formControlName="Password" placeholder="{{passwordTitle}}"
                                 type="{{ hide ? 'password' : 'text'}}" (ngModelChange)="validationSinup()" required>
                             <mat-error *ngFor="let validation of validationMessages.Password">
@@ -36,20 +35,15 @@
                         </mat-form-field>
                     </div>
                 </div>
-                <div class="row centerText">
+                <div class="row text-center mt-2">
                     <div>
-                        <button mat-raised-button color="primary" (click)="onLogin()"
-                            class="loginButton">{{loginButtonName}}</button>
+                        <button mat-raised-button color="primary" (click)="onLogin()">{{loginButtonName}}</button>
                     </div>
                 </div>
-                <div class="row link">
+                <div class="row mt-2">
                     <div class="col-md-12">
-                        <span>
-                            <a class="product-link" (click)="onForgotPassword()">{{forgotPassword}}</a>
-                        </span>
-                        <span class="signlink">
-                            <a class="product-link" [routerLink]="['/signup']">{{signUp}}</a>
-                        </span>
+                        <a (click)="onForgotPassword()" class="text-blue">{{forgotPassword}}</a>
+                        <a class="float-end" [routerLink]="['/signup']">{{signUp}}</a>
                     </div>
                 </div>
             </form>
